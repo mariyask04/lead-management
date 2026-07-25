@@ -128,6 +128,12 @@ export const updateLead = async (req, res) => {
 
         await lead.save();
 
+        await Activity.create({
+            lead: lead._id,
+            user: req.user.id,
+            action: `Lead updated`,
+        });
+
         res.status(200).json({
             message: "Lead updated successfully.",
             lead,
