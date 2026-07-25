@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createLead } from "@/services/lead.service";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -53,84 +54,87 @@ export default function Home() {
   };
 
   return (
-    <main style={{ maxWidth: "600px", margin: "40px auto" }}>
-      <h1>Lead Management System</h1>
+    <>
+      <main style={{ maxWidth: "600px", margin: "40px auto" }}>
+        <h1>Lead Management System</h1>
 
-      <p>
-        Fill out the form below and our team will contact you.
-      </p>
+        <p>
+          Fill out the form below and our team will contact you.
+        </p>
 
-      {success && (
-        <p style={{ color: "green" }}>{success}</p>
-      )}
+        {success && (
+          <p style={{ color: "green" }}>{success}</p>
+        )}
 
-      {error && (
-        <p style={{ color: "red" }}>{error}</p>
-      )}
+        {error && (
+          <p style={{ color: "red" }}>{error}</p>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <input
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
+          <input
+            name="phone"
+            placeholder="Phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <input
-          name="company"
-          placeholder="Company"
-          value={formData.company}
-          onChange={handleChange}
-        />
+          <input
+            name="company"
+            placeholder="Company"
+            value={formData.company}
+            onChange={handleChange}
+          />
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <textarea
-          name="message"
-          placeholder="Message"
-          rows="5"
-          value={formData.message}
-          onChange={handleChange}
-        />
+          <textarea
+            name="message"
+            placeholder="Message"
+            rows="5"
+            value={formData.message}
+            onChange={handleChange}
+          />
 
-        <br />
-        <br />
+          <br />
+          <br />
 
-        <button
-          type="submit"
-          disabled={loading}
-        >
-          {loading ? "Submitting..." : "Submit Lead"}
-        </button>
-      </form>
-    </main>
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit Lead"}
+          </button>
+        </form>
+      </main>
+      <Footer />
+    </>
   );
 }

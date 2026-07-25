@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/Footer";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -41,32 +42,35 @@ export default function LoginPage() {
     };
 
     return (
-        <main className="container">
-            <h1>Login</h1>
+        <>
+            <main className="container">
+                <h1>Login</h1>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
 
-                <button type="submit">
-                    Login
-                </button>
-            </form>
+                    <button type="submit">
+                        Login
+                    </button>
+                </form>
 
-            {error && <p>{error}</p>}
-        </main>
+                {error && <p>{error}</p>}
+            </main>
+            <Footer />
+        </>
     );
 }

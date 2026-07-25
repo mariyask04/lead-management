@@ -1,5 +1,5 @@
-import User from "../models/user.model.js";
-import Lead from "../models/lead.model.js";
+import User from "../models/User.model.js";
+import Lead from "../models/Lead.model.js";
 import Activity from "../models/Activity.model.js";
 
 export const createLead = async (req, res) => {

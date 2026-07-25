@@ -19,6 +19,7 @@ import { useAuth } from "@/context/AuthContext";
 import { getActivities } from "@/services/activity.service";
 import NoteList from "@/components/NoteList";
 import ActivityTimeline from "@/components/ActivityTimeline";
+import Footer from "@/components/Footer";
 
 
 export default function LeadDetailsPage() {
@@ -299,6 +300,8 @@ export default function LeadDetailsPage() {
             <ActivityTimeline
                 activities={activities}
             />
+
+            <Footer />
         </ProtectedRoute>
     );
 }

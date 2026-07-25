@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/Footer";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -40,48 +41,51 @@ export default function RegisterPage() {
     };
 
     return (
-        <main className="container">
-            <h1>Register</h1>
+        <>
+            <main className="container">
+                <h1>Register</h1>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
+                <form onSubmit={handleSubmit}>
+                    <input
+                        name="name"
+                        placeholder="Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
 
-                <select
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                >
-                    <option value="member">Member</option>
-                    <option value="admin">Admin</option>
-                </select>
+                    <select
+                        name="role"
+                        value={formData.role}
+                        onChange={handleChange}
+                    >
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                    </select>
 
-                <button type="submit">
-                    Register
-                </button>
-            </form>
+                    <button type="submit">
+                        Register
+                    </button>
+                </form>
 
-            {error && <p>{error}</p>}
-        </main>
+                {error && <p>{error}</p>}
+            </main>
+            <Footer />
+        </>
     );
 }

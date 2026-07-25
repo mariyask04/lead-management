@@ -8,6 +8,7 @@ import StatsCards from "@/components/StatsCards";
 import LeadTable from "@/components/LeadTable";
 
 import { getLeadStats, getLeads } from "@/services/lead.service";
+import Footer from "@/components/Footer";
 
 export default function Dashboard() {
     const [stats, setStats] = useState(null);
@@ -113,6 +114,7 @@ export default function Dashboard() {
                     </button>
                 </div>
             </main>
+            <Footer />
         </ProtectedRoute>
     );
 }
