@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import Lead from "../models/lead.model.js";
+import Activity from "../models/Activity.model.js";
 
 export const createLead = async (req, res) => {
     try {
@@ -17,6 +18,12 @@ export const createLead = async (req, res) => {
             phone,
             company,
             message,
+        });
+
+        await Activity.create({
+            lead: lead._id,
+            user: req.user?.id || null,
+            action: "Lead created",
         });
 
         res.status(201).json({
@@ -178,6 +185,12 @@ export const assignLead = async (req, res) => {
 
         await lead.save();
 
+        await Activity.create({
+            lead: lead._id,
+            user: req.user.id,
+            action: `Lead assigned to ${user.name}`,
+        });
+
         res.status(200).json({
             message: "Lead assigned successfully.",
             lead,
@@ -204,6 +217,12 @@ export const updateLeadStatus = async (req, res) => {
         lead.status = status;
 
         await lead.save();
+
+        await Activity.create({
+            lead: lead._id,
+            user: req.user.id,
+            action: `Status changed to ${status}`,
+        });
 
         res.status(200).json({
             message: "Lead status updated successfully.",
