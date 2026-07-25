@@ -3,6 +3,7 @@ import cors from "cors";
 
 import authRoutes from "./routes/auth.router.js";
 import leadRoutes from "./routes/lead.router.js";
+import noteRoutes from "./routes/note.router.js";
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/leads", leadRoutes);
+app.use("/api/notes", noteRoutes);
 
 export default app;
