@@ -7,6 +7,7 @@ import {
   deleteLead,
   assignLead,
   updateLeadStatus,
+  getLeadStats,
 } from "../controllers/lead.controller.js";
 
 import {
@@ -20,6 +21,8 @@ const router = express.Router();
 router.post("/", createLead);
 
 // Protected
+router.get("/stats", verifyToken, getLeadStats);
+
 router.get("/", verifyToken, getLeads);
 
 router.get("/:id", verifyToken, getLeadById);

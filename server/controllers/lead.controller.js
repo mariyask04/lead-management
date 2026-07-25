@@ -234,3 +234,30 @@ export const updateLeadStatus = async (req, res) => {
         });
     }
 };
+
+export const getLeadStats = async (req, res) => {
+    try {
+        const filter = req.user.role === "admin" ? {} : { assignedTo: req.user.id };
+        const totalLeads = await Lead.countDocuments(filter);
+        const newLeads = await Lead.countDocuments({ ...filter, status: "New" });
+        const contacted = await Lead.countDocuments({ ...filter, status: "Contacted" });
+        const qualified = await Lead.countDocuments({ ...filter, status: "Qualified" });
+        const proposalSent = await Lead.countDocuments({ ...filter, status: "Proposal Sent" });
+        const won = await Lead.countDocuments({ ...filter, status: "Won" });
+        const lost = await Lead.countDocuments({ ...filter, status: "Lost" });
+
+        res.status(200).json({
+            totalLeads,
+            newLeads,
+            contacted,
+            qualified,
+            proposalSent,
+            won,
+            lost,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message,
+        });
+    }
+};
