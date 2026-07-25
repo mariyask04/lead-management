@@ -15,7 +15,12 @@ export default function ProtectedRoute({ children }) {
     }, [user, loading, router]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3">
+                <span className="h-8 w-8 animate-spin rounded-full border-2 border-[var(--color-border-strong)] border-t-[var(--color-navy)]" />
+                <p className="text-sm text-[var(--color-ink-faint)]">Loading...</p>
+            </div>
+        );
     }
 
     if (!user) {
