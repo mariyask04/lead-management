@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createLead } from "@/services/lead.service";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -144,6 +145,12 @@ export default function Home() {
                 {loading ? "Submitting..." : "Submit Lead"}
               </button>
             </form>
+            <p className="mt-5 text-center text-sm text-[var(--color-ink-faint)]">
+              Part of Lead Management System?{" "}
+              <Link href="/login" className="font-semibold text-[var(--color-navy)] hover:text-[var(--color-signal-dark)]">
+                Click here
+              </Link>
+            </p>
           </div>
         </div>
       </main>
