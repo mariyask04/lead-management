@@ -11,7 +11,7 @@ import userRoutes from "./routes/user.router.js";
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:3000",]
+    origin: ["http://localhost:3000", "https://lead-management-5f2i.vercel.app/"]
 }));
 app.use(express.json());
 app.use(morgan("dev"));
